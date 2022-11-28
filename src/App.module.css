@@ -1,0 +1,40 @@
+.addTask {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  margin-top: -1.8rem;
+}
+
+.addTask button, input {
+  width: 100%;
+}
+
+.addTask button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+main {
+  max-width: 736px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .addTask {
+    flex-direction: row;
+    margin-top: -1.4rem;
+  }
+
+  .addTask input {
+    flex: 1 1 85%;
+  }
+
+  .addTask button {
+    flex: 1 1 15%;
+  }
+}
