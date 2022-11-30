@@ -1,4 +1,4 @@
-import { DeleteOutlined } from '@ant-design/icons';
+import { FaTrashAlt } from 'react-icons/fa';
 
 import styles from './styles.module.css'
 
@@ -12,7 +12,7 @@ export function Task({ task, isCompleted, handleDeleteTask }: TaskProps) {
   return (
     <div className={styles.task}>
       <p>{task}</p>
-      <DeleteOutlined onClick={() => handleDeleteTask(task)} />
+      <FaTrashAlt onClick={() => handleDeleteTask(task)} />
     </div>
   )
 }

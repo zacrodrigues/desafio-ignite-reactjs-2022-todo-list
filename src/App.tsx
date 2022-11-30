@@ -3,7 +3,8 @@ import { ChangeEvent, useState } from 'react'
 import { Header } from './components/Header'
 import { Task } from './components/Task'
 
-import { PlusCircleOutlined, ProfileOutlined } from '@ant-design/icons'
+import { FaTasks } from 'react-icons/fa'
+import { AiOutlinePlusCircle } from 'react-icons/ai'
 
 import styles from './App.module.css'
 
@@ -44,7 +45,7 @@ export function App() {
           />
           <button onClick={handleAddNewTaskToList}>
             Criar
-            <PlusCircleOutlined />
+            <AiOutlinePlusCircle />
           </button>
         </div>
         <div className={styles.infos}>
@@ -72,7 +73,7 @@ export function App() {
             <>
               <hr />
               <div className={styles.taskListEmpty}>
-                <ProfileOutlined />
+                <FaTasks />
                 <h4>Você ainda não tem tarefas cadastradas</h4>
                 <p>Crie tarefas e organize seus itens a fazer</p>
               </div>
