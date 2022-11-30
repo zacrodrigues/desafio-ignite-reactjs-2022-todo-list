@@ -1,17 +1,38 @@
 .task {
-  background: var(--gray-400);
+  background: var(--gray-500);
   border-radius: 8px;
   padding: 1.5rem;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  display: grid;
+  grid-template-areas: 'checkIcon task deleteIcon';
+  grid-template-columns: 20px 1fr 20px;
+  gap: 0.8rem;
+  font-size: 1rem;
 }
 
-.task svg {
+.task + .task {
+  margin-top: 1rem;
+}
+
+.border {
+  border: 1px solid var(--gray-400)
+}
+
+.unchekedIcon {
+  color: var(--blue);
+  grid-area: checkIcon;
+}
+
+.task p {
+  margin-top: -0.123rem;
+  grid-area: task;
+}
+
+.deleteIcon {
   color: var(--gray-300);
   transition: color 0.2s;
+  grid-area: deleteIcon;
 }
 
-.task svg:hover {
+.deleteIcon:hover {
   color: var(--danger)
 }

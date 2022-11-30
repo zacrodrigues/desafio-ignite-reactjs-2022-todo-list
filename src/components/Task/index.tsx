@@ -1,4 +1,4 @@
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt, FaRegCircle, FaCheckCircle } from 'react-icons/fa';
 
 import styles from './styles.module.css'
 
@@ -11,8 +11,9 @@ interface TaskProps {
 export function Task({ task, isCompleted, handleDeleteTask }: TaskProps) {
   return (
     <div className={styles.task}>
+      <FaRegCircle className={styles.unchekedIcon} />
       <p>{task}</p>
-      <FaTrashAlt onClick={() => handleDeleteTask(task)} />
+      <FaTrashAlt className={styles.deleteIcon} onClick={() => handleDeleteTask(task)} />
     </div>
   )
 }
