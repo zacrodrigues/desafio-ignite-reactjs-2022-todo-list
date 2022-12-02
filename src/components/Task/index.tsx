@@ -6,14 +6,27 @@ interface TaskProps {
   task: string;
   isCompleted: boolean;
   handleDeleteTask: (deleteTask: string) => void;
+  handleCheckTask: (checkTask: string) => void;
 }
 
-export function Task({ task, isCompleted, handleDeleteTask }: TaskProps) {
+export function Task({ task, isCompleted, handleDeleteTask, handleCheckTask }: TaskProps) {
   return (
-    <div className={styles.task}>
-      <FaRegCircle className={styles.unchekedIcon} />
-      <p>{task}</p>
-      <FaTrashAlt className={styles.deleteIcon} onClick={() => handleDeleteTask(task)} />
+    <div className={isCompleted ? `${styles.task}` : `${styles.task} ${styles.border}`}>
+      {isCompleted
+        ? <FaCheckCircle onClick={() => handleCheckTask(task)} className={styles.checkedIcon} />
+        : <FaRegCircle onClick={() => handleCheckTask(task)} className={styles.uncheckedIcon} />
+      }
+
+      <p
+        className={isCompleted ? styles.checkedTask : styles.uncheckedTask}
+      >
+        {task}
+      </p>
+
+      <FaTrashAlt
+        className={styles.deleteIcon}
+        onClick={() => handleDeleteTask(task)}
+      />
     </div>
   )
 }

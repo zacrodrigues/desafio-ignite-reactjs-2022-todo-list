@@ -43,6 +43,8 @@ button, input {
 button {
   background: var(--blue-dark);
   color: var(--gray-100);
+  transition: background 0.2s;
+  cursor: pointer;
 }
 
 button:hover {

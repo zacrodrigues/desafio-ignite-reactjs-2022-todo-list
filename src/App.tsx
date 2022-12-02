@@ -17,6 +17,8 @@ export function App() {
   const [newTask, setNewTask] = useState('');
   const [taskList, setTaskList] = useState<taskListProps[]>([]);
 
+  const taskListCompleted = taskList.filter(task => task.isCompleted === true);
+
   function handleTaskCreate(event: ChangeEvent<HTMLInputElement>) {
     const inputValue = event.target.value;
     setNewTask(inputValue);
@@ -30,6 +32,13 @@ export function App() {
   function handleDeleteTask(deleteTask: string) {
     const deletedTask = taskList.filter(task => task.task !== deleteTask)
     setTaskList(deletedTask);
+  }
+
+  function handleCheckTask(checkTask: string) {
+    const copyTaskList = [...taskList]
+    const taskIndex = copyTaskList.findIndex(task => task.task === checkTask);
+    copyTaskList[taskIndex].isCompleted = !copyTaskList[taskIndex].isCompleted
+    setTaskList(copyTaskList)
   }
 
   return (
@@ -53,7 +62,7 @@ export function App() {
             Tarefas criadas <span>{taskList.length}</span>
           </div>
           <div className={styles.countCompletedTasks}>
-            Concluídas <span>0</span>
+            Concluídas <span>{taskListCompleted.length} de {taskList.length}</span>
           </div>
         </div>
         {taskList.length > 0
@@ -65,6 +74,7 @@ export function App() {
                   task={task.task}
                   isCompleted={task.isCompleted}
                   handleDeleteTask={handleDeleteTask}
+                  handleCheckTask={handleCheckTask}
                 />
               )
             })

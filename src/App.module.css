@@ -90,3 +90,10 @@ hr {
     flex: 1 1 15%;
   }
 }
+
+@media (max-width: 320px) {
+  .infos {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
