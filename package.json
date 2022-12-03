@@ -1,6 +1,6 @@
 {
   "name": "desafio-ignite-reactjs-2022-todo-list",
-  "homepage": "./",
+  "homepage": "./dist",
   "private": true,
   "version": "0.0.0",
   "type": "module",
