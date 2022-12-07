@@ -15,7 +15,15 @@ interface taskListProps {
 
 export function App() {
   const [newTask, setNewTask] = useState('');
-  const [taskList, setTaskList] = useState<taskListProps[]>([]);
+  const [taskList, setTaskList] = useState<taskListProps[]>(() => {
+    const taskListLocalStorage = localStorage.getItem('taskList')
+
+    if (taskListLocalStorage) {
+      return JSON.parse(taskListLocalStorage)
+    }
+
+    return []
+  });
 
   const taskListCompleted = taskList.filter(task => task.isCompleted === true);
 
@@ -25,13 +33,16 @@ export function App() {
   }
 
   function handleAddNewTaskToList() {
-    setTaskList([...taskList, { task: newTask, isCompleted: false }])
+    const addNewTaskToList = [...taskList, { task: newTask, isCompleted: false }]
+    setTaskList(addNewTaskToList)
+    localStorage.setItem('taskList', JSON.stringify(addNewTaskToList))
     setNewTask('')
   }
 
-  function handleDeleteTask(deleteTask: string) {
-    const deletedTask = taskList.filter(task => task.task !== deleteTask)
+  function handleDeleteTask(taskToDelete: string) {
+    const deletedTask = taskList.filter(task => task.task !== taskToDelete)
     setTaskList(deletedTask);
+    localStorage.setItem('taskList', JSON.stringify(deletedTask))
   }
 
   function handleCheckTask(checkTask: string) {
@@ -39,6 +50,7 @@ export function App() {
     const taskIndex = copyTaskList.findIndex(task => task.task === checkTask);
     copyTaskList[taskIndex].isCompleted = !copyTaskList[taskIndex].isCompleted
     setTaskList(copyTaskList)
+    localStorage.setItem('taskList', JSON.stringify(copyTaskList))
   }
 
   return (

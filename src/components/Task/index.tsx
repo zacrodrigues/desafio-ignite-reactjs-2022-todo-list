@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 interface TaskProps {
   task: string;
   isCompleted: boolean;
-  handleDeleteTask: (deleteTask: string) => void;
+  handleDeleteTask: (taskToDelete: string) => void;
   handleCheckTask: (checkTask: string) => void;
 }
 
